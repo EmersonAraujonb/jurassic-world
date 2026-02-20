@@ -23,10 +23,16 @@ function compilaSass() {
         .pipe(gulp.dest('./dist/css'));
 }
 
+function html() {
+    return gulp.src('./index.html')
+        .pipe(gulp.dest('./dist'))
+}
+
 exports.default = function() {
     gulp.watch('./src/styles/**/*.scss', { ignoreInitial: false }, gulp.series(compilaSass));
     gulp.watch('./src/scripts/*.js',  { ignoreInitial: false }, gulp.series(comprimeJavaScript));
     gulp.watch('./src/images/**/*',  { ignoreInitial: false }, gulp.series(otimizaImagens));
+    gulp.watch('./index.html',  { ignoreInitial: false }, gulp.series(html));
 }
 
 // exports.default = compilaSass;
