@@ -2,6 +2,7 @@ const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const uglify = require('gulp-uglify');
 const imageMin = require('gulp-imagemin');
+const newer = require('gulp-newer');
 
 function otimizaImagens() {
     return gulp.src('src/images/**/*')
@@ -28,8 +29,15 @@ function html() {
         .pipe(gulp.dest('./dist'))
 }
 
+function videos() {
+    return gulp.src('./src/videos/**/*')
+        .pipe(newer('./dist/videos'))
+        .pipe(gulp.dest('./dist/videos'));
+}
+
 exports.default = gulp.series(
     html,
+    videos,
     gulp.parallel(
         compilaSass,
         comprimeJavaScript,
