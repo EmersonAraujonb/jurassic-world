@@ -1,12 +1,16 @@
 const gulp = require('gulp');
 const sass = require('gulp-sass')(require('sass'));
 const uglify = require('gulp-uglify');
-const imageMin = require('gulp-imagemin');
-const newer = require('gulp-newer');
+const imagemin = require('gulp-imagemin');
 
 function otimizaImagens() {
-    return gulp.src('src/images/**/*')
-        .pipe(imageMin())
+    return gulp.src('src/images/**/*.{jpg,jpeg,png,gif,svg,webp}')
+        .pipe(imagemin([
+            imagemin.mozjpeg({ quality: 75, progressive: true }),
+            imagemin.optipng({ optimizationLevel: 5 }),
+            imagemin.svgo()
+        ]))
+        .pipe(imagemin())
         .pipe(gulp.dest('./dist/images'));
 }
 
@@ -31,7 +35,6 @@ function html() {
 
 function videos() {
     return gulp.src('./src/videos/**/*')
-        .pipe(newer('./dist/videos'))
         .pipe(gulp.dest('./dist/videos'));
 }
 
