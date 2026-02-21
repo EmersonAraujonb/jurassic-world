@@ -34,7 +34,7 @@ function html() {
 }
 
 function videos() {
-    return gulp.src('./src/videos/**/*')
+    return gulp.src('src/videos/**/*')
         .pipe(gulp.dest('./dist/videos'));
 }
 
