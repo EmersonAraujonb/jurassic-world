@@ -2,6 +2,7 @@
   "name": "exercicio_modulo-21",
   "version": "1.0.0",
   "description": "",
+  "type": "module",
   "main": "index.js",
   "scripts": {
     "build": "gulp",
@@ -12,9 +13,11 @@
   "license": "ISC",
   "devDependencies": {
     "gulp": "^5.0.1",
-    "gulp-imagemin": "^7.1.0",
     "gulp-sass": "^6.0.1",
     "gulp-uglify": "^3.0.2",
     "sass": "^1.97.3"
+  },
+  "dependencies": {
+    "gulp-imagemin": "^9.2.0"
   }
 }
